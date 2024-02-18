@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="/page-1/assets/icono.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>Facial-lex</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Epilogue%3A600%2C700"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C600%2C700"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A400%2C700"/>
+  <link rel="stylesheet" href="./styles/toma-de-imagenes.css"/>
+</head>
+<body>
+<div class="toma-de-imagenes-DJB">
+  <div class="container-48-iVq">
+    <div class="image-pHy">
+    </div>
+    <p class="facial-lex-i8T">Facial-lex</p>
+    <div class="header-menu-6-phH">
+      <a class="frame-inf" aria-current="page" href="pag-perfil.html">Perfil</a>
+      <a class="frame-d8w" href="pag-perfil.html">Galeria</a>
+      <a class="frame-8Lb" href="pag-perfil.html">Progreso</a>
+    </div>
+    <button type="button" class="button-41-tUB"><a href="container-31.html">Ingresar</a></button>
+    <button type="button" class="button-51-MsZ"><a href="registro.html">Registrarse</a></button>
+  </div>
+  <div class="auto-group-6cgs-BLo">
+    <div class="auto-group-wvlf-vJP">
+      <div class="group-1-ekB">
+        <div class="rectangle-1-nrP">
+        </div>
+        <div class="rectangle-2-jFq">
+        </div>
+        <div class="container-49-TSj">
+          <video id="video" autoplay></video>
+        </div>
+      </div>
+      <div class="auto-group-crk7-ijM">
+        <button type="button" class="button-52-Ehh">Analizar</button>
+        <button type="button" class="button-52-Xgo">Repetir</button>
+      </div>
+    </div>
+    <div class="auto-group-w9bz-bgf">
+      <div class="auto-group-rg5h-KMm">
+        <button type="button" class="button-51-s8P">Empezar</button>
+        <button type="button" class="button-50-ANP">Primer Gesto</button>
+      </div>
+      <button type="button" class="button-51-3BH">Segundo Gesto</button>
+      <button type="button" class="button-50-wGf">Tercer Gesto</button>
+    </div>
+    <div class="auto-group-amhd-RSj">
+      <p class="replica-este-gesto-yUF">Replica este gesto</p>
+      <div class="container-49-h9M">
+        <div class="auto-group-g3is-b8F">
+          <div class="image-vgK">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+<script>
+    // Acceder a la cámara
+    navigator.mediaDevices.getUserMedia({ video: true })
+    .then(function(stream) {
+        var video = document.getElementById('video');
+        video.srcObject = stream;
+        video.play();
+    })
+    .catch(function(err) {
+        console.log("An error occurred: " + err);
+    });
+</script>
+</body>

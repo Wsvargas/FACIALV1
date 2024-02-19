@@ -30,5 +30,5 @@ face_mask = cv2.face.LBPHFaceRecognizer_create()
 print("Entrenando...")
 face_mask.train(facesData, np.array(labels))
 # Almacenar modelo
-face_mask.write("face_mask_model.xml")
+face_mask.write("face_model.xml")
 print("Modelo almacenado")

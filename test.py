@@ -48,9 +48,9 @@ def generate_frames():
                 # Predecir usando el modelo entrenado
                 result, confidence = face_mask.predict(face_image_resized)
 
-                if confidence > 140:
+                if confidence > 135:
                     grado_paralisis = "Grado 1"
-                elif 135 <= confidence <= 140:
+                elif 120 <= confidence <= 135:
                     grado_paralisis = "Grado 2"
                 else:
                     grado_paralisis = "Grado 3"
@@ -58,7 +58,7 @@ def generate_frames():
                 print("Grado de parálisis:", grado_paralisis)
 
                 if result < 150:
-                    label = "P FACIAL DETECTADA" if result == 0 else "TODO MACHA BIEN"
+                    label = "P FACIAL DETECTADA" if result == 0 else "TODO MARCHA BIEN"
                     color = (0, 255, 0) if label == "P FACIAL DETECTADA" else (0, 0, 255)
                     cv2.putText(frame, "{}".format(label), (xmin, ymin - 15), 2, 1, color, 1, cv2.LINE_AA)
                     cv2.rectangle(frame, (xmin, ymin), (xmin + w, ymin + h), color, 2)

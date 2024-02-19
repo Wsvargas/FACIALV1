@@ -2,7 +2,7 @@ import cv2
 import os
 import numpy as np
 
-dataPath = "E:/facialexp/Dataset_faces"
+dataPath = "C:/Users/GABRIELA/OneDrive/Documents/GitHub/facialuxV1/Dataset_faces"
 dir_list = os.listdir(dataPath)
 print("Lista archivos:", dir_list)
 

@@ -16,10 +16,10 @@ body {
   width: 143.7rem;
 }.container-31-GJF {
   box-sizing: border-box;
-  padding-left: 9.45rem;
+  padding-left: 10.45rem;
   width: 100%;
   overflow: hidden;
-  position: relative;
+  position: absolute;
   display: flex;
   align-items: flex-start;
   background-color: #ffffff;
@@ -51,7 +51,6 @@ body {
   position: relative;
   background-size: 115.054% 100%;
   background-position: -0.7rem 0;
-  background-image: url('REPLACE_IMAGE:270f0f470aeff6db2d32842e7786524a12b00cee');
   flex-shrink: 0;
 }
 .container-31-GJF .auto-group-odk9-Q35 .textbox-12-rUj {
@@ -184,7 +183,7 @@ body {
 .container-31-GJF .container-110-EWX {
   box-sizing: border-box;
   padding-bottom: 8.5rem;
-  width: 74.5rem;
+  width: 99,5rem;
   height: 91.5rem;
   overflow: hidden;
   position: relative;
@@ -254,13 +253,13 @@ body {
 }
 .container-31-GJF .container-110-EWX .auto-group-mzdz-BaB .auto-group-s5f1-Kpo .image-wjh {
   width: 12.4rem;
-  height: 22.1rem;
+  height: 17.1rem;
   position: relative;
   left: 29.6rem;
   top: 0;
   background-size: 108.871% 100%;
   background-position: -0.5rem 0;
-  background-image: url('REPLACE_IMAGE:cd1d7400bb6471f897a37f71b70b40d6d7987580');
+  background-image: url('../assets/image-zAF.png');
   border-radius: 6.2rem;
 }
 .container-31-GJF .container-110-EWX .auto-group-mzdz-BaB .auto-group-s5f1-Kpo .image-dcX {
@@ -268,32 +267,32 @@ body {
   height: 17.4rem;
   position: relative;
   left: 6.9rem;
-  top: 31.9rem;
+  top: 23.9rem;
   background-size: 100% 105.747%;
   background-position: 0 -0.5rem;
-  background-image: url('REPLACE_IMAGE:f097637ef9f175c4286754096a538046b915abfd');
+  background-image: url('../assets/image-dEb.png');
   border-radius: 0 5.6rem 5.6rem 5.6rem;
 }
 .container-31-GJF .container-110-EWX .auto-group-mzdz-BaB .auto-group-s5f1-Kpo .image-WRR {
-  width: 17.1rem;
-  height: 21.4rem;
+  width: 13.1rem;
+  height: 18.4rem;
   position: relative;
-  left: 0.9rem;
-  top: 3.8rem;
+  left: 35.9rem;
+  top: 1.0rem;
   background-size: 100% 103.738%;
   background-position: 0 -0.4rem;
-  background-image: url('REPLACE_IMAGE:23188a9123b023b9002c97323f29c5e19878f3ad');
+  background-image: url('../assets/image-8EF.png');
   border-radius: 8.6rem;
 }
 .container-31-GJF .container-110-EWX .auto-group-mzdz-BaB .auto-group-s5f1-Kpo .image-Cp3 {
-  width: 16.9rem;
-  height: 21.4rem;
+  width: 14.9rem;
+  height: 17.4rem;
   position: relative;
-  left: 27.9rem;
-  top: 26.7rem;
+  left: -1.9rem;
+  top: -45rem;
   background-size: 100% 102.804%;
   background-position: 0 -0.3rem;
-  background-image: url('REPLACE_IMAGE:9db96f0fdae9476611578c13501e25642663b19a');
+  background-image: url('../assets/image-h5u.png');
   border-radius: 8.5rem;
 }
 .container-31-GJF .container-110-EWX .derramia-V2T {

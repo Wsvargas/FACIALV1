@@ -12,7 +12,7 @@ dataPath = "E:/facialexp/Dataset_faces"
 
 # Cargar modelo entrenado
 face_mask = cv2.face.LBPHFaceRecognizer_create()
-face_mask.read("face_mask_model.xml")
+face_mask.read("face_model.xml")
 
 @app.route('/camara.html')
 def camera_page():

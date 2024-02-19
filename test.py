@@ -1,29 +1,32 @@
+from flask import Flask, render_template, Response
+import cv2
+import mediapipe as mp
 
 
-import cv2 #Para el procesamiento de imagenes
-import os
-import mediapipe as mp  #Para la detección facial
+app = Flask(__name__)
 
-#Inicializacion de mediapipe
 mp_face_detection = mp.solutions.face_detection
-# Definicion de etiquetas
-LABELS = ["P FACIAL DETECTADA", "TODO MACHA BIEN"]
+face_detection = mp_face_detection.FaceDetection(min_detection_confidence=0.5)
 
-#Crear un reconocedor LBPH
+dataPath = "E:/facialexp/Dataset_faces"
+
+# Cargar modelo entrenado
 face_mask = cv2.face.LBPHFaceRecognizer_create()
-#Se carga un modelo previamente entrenado para el reconocimiento facial.
 face_mask.read("face_mask_model.xml")
 
-#Se inicializa la captura de video desde la cámara (o el dispositivo de captura).
-cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+@app.route('/camara.html')
+def camera_page():
+    return render_template('camara.html')
 
-with mp_face_detection.FaceDetection(
-        min_detection_confidence=0.5) as face_detection:
+def generate_frames():
+    cap = cv2.VideoCapture(0)
+
     while True:
         ret, frame = cap.read()
-        if ret == False: break
-        frame = cv2.flip(frame, 1)
+        if not ret:
+            break
 
+        frame = cv2.flip(frame, 1)
         height, width, _ = frame.shape
         frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         results = face_detection.process(frame_rgb)
@@ -34,17 +37,16 @@ with mp_face_detection.FaceDetection(
                 ymin = int(detection.location_data.relative_bounding_box.ymin * height)
                 w = int(detection.location_data.relative_bounding_box.width * width)
                 h = int(detection.location_data.relative_bounding_box.height * height)
+
                 if xmin < 0 and ymin < 0:
                     continue
-                cv2.rectangle(frame, (xmin, ymin), (xmin + w, ymin + h), (0, 255, 0), 5)
 
                 face_image = frame[ymin: ymin + h, xmin: xmin + w]
-                face_image = cv2.cvtColor(face_image, cv2.COLOR_BGR2GRAY)
-                face_image = cv2.resize(face_image, (72, 72), interpolation=cv2.INTER_CUBIC)
+                face_image_gray = cv2.cvtColor(face_image, cv2.COLOR_BGR2GRAY)
+                face_image_resized = cv2.resize(face_image_gray, (72, 72), interpolation=cv2.INTER_CUBIC)
 
-                result = face_mask.predict(face_image)
-                cv2.putText(frame, "{}".format(result), (xmin, ymin - 5), 1, 1.3, (210, 124, 176), 1, cv2.LINE_AA)
-                result_index, confidence = face_mask.predict(face_image)
+                # Predecir usando el modelo entrenado
+                result, confidence = face_mask.predict(face_image_resized)
 
                 if confidence > 140:
                     grado_paralisis = "Grado 1"
@@ -55,16 +57,23 @@ with mp_face_detection.FaceDetection(
 
                 print("Grado de parálisis:", grado_paralisis)
 
-                if result[1] < 150:
-                    color = (0, 255, 0) if LABELS[result[0]] == "P FACIAL DETECTADA" else (0, 0, 255)
-                    cv2.putText(frame, "{}".format(LABELS[result[0]]), (xmin, ymin - 15), 2, 1, color, 1, cv2.LINE_AA)
+                if result < 150:
+                    label = "P FACIAL DETECTADA" if result == 0 else "TODO MACHA BIEN"
+                    color = (0, 255, 0) if label == "P FACIAL DETECTADA" else (0, 0, 255)
+                    cv2.putText(frame, "{}".format(label), (xmin, ymin - 15), 2, 1, color, 1, cv2.LINE_AA)
                     cv2.rectangle(frame, (xmin, ymin), (xmin + w, ymin + h), color, 2)
 
-        cv2.imshow("Frame", frame)
-        k = cv2.waitKey(1)
-        if k == 27:
-            break
+        ret, buffer = cv2.imencode('.jpg', frame)
+        frame = buffer.tobytes()
 
+        yield (b'--frame\r\n'
+               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
-cap.release()
-cv2.destroyAllWindows()
+    cap.release()
+
+@app.route('/video_feed')
+def video_feed():
+    return Response(generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
+
+if __name__ == '__main__':
+    app.run(debug=True)

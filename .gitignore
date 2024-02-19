@@ -1,3 +1,2 @@
 venv
-env
-face_mask_model
+.env

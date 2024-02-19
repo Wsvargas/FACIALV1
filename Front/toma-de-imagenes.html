@@ -33,7 +33,8 @@
         <div class="rectangle-2-jFq">
         </div>
         <div class="container-49-TSj">
-          <video id="video" autoplay></video>
+          <!-- Cambiado de <video> a <iframe> -->
+          <iframe id="video" src="camara.html" width="640" height="480" frameborder="0" allowfullscreen></iframe>
         </div>
       </div>
       <div class="auto-group-crk7-ijM">
@@ -61,17 +62,5 @@
   </div>
   
 </div>
-
-<script>
-    // Acceder a la cámara
-    navigator.mediaDevices.getUserMedia({ video: true })
-    .then(function(stream) {
-        var video = document.getElementById('video');
-        video.srcObject = stream;
-        video.play();
-    })
-    .catch(function(err) {
-        console.log("An error occurred: " + err);
-    });
-</script>
 </body>
+</html>
